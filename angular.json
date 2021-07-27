@@ -1,0 +1,155 @@
+{
+  "version": 1,
+  "projects": {
+    "simplekart": {
+      "projectType": "application",
+      "root": "apps/simplekart",
+      "sourceRoot": "apps/simplekart/src",
+      "prefix": "eweb",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:browser",
+          "outputs": ["{options.outputPath}"],
+          "options": {
+            "outputPath": "dist/apps/simplekart",
+            "index": "apps/simplekart/src/index.html",
+            "main": "apps/simplekart/src/main.ts",
+            "polyfills": "apps/simplekart/src/polyfills.ts",
+            "tsConfig": "apps/simplekart/tsconfig.app.json",
+            "inlineStyleLanguage": "scss",
+            "assets": [
+              "apps/simplekart/src/favicon.ico",
+              "apps/simplekart/src/assets"
+            ],
+            "styles": ["apps/simplekart/src/styles.scss"],
+            "scripts": []
+          },
+          "configurations": {
+            "production": {
+              "budgets": [
+                {
+                  "type": "initial",
+                  "maximumWarning": "500kb",
+                  "maximumError": "1mb"
+                },
+                {
+                  "type": "anyComponentStyle",
+                  "maximumWarning": "2kb",
+                  "maximumError": "4kb"
+                }
+              ],
+              "fileReplacements": [
+                {
+                  "replace": "apps/simplekart/src/environments/environment.ts",
+                  "with": "apps/simplekart/src/environments/environment.prod.ts"
+                }
+              ],
+              "outputHashing": "all"
+            },
+            "development": {
+              "buildOptimizer": false,
+              "optimization": false,
+              "vendorChunk": true,
+              "extractLicenses": false,
+              "sourceMap": true,
+              "namedChunks": true
+            }
+          },
+          "defaultConfiguration": "production"
+        },
+        "serve": {
+          "builder": "@angular-devkit/build-angular:dev-server",
+          "configurations": {
+            "production": {
+              "browserTarget": "simplekart:build:production"
+            },
+            "development": {
+              "browserTarget": "simplekart:build:development"
+            }
+          },
+          "defaultConfiguration": "development"
+        },
+        "extract-i18n": {
+          "builder": "@angular-devkit/build-angular:extract-i18n",
+          "options": {
+            "browserTarget": "simplekart:build"
+          }
+        },
+        "lint": {
+          "builder": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": [
+              "apps/simplekart/src/**/*.ts",
+              "apps/simplekart/src/**/*.html"
+            ]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "outputs": ["coverage/apps/simplekart"],
+          "options": {
+            "jestConfig": "apps/simplekart/jest.config.js",
+            "passWithNoTests": true
+          }
+        }
+      }
+    },
+    "simplekart-e2e": {
+      "root": "apps/simplekart-e2e",
+      "sourceRoot": "apps/simplekart-e2e/src",
+      "projectType": "application",
+      "architect": {
+        "e2e": {
+          "builder": "@nrwl/cypress:cypress",
+          "options": {
+            "cypressConfig": "apps/simplekart-e2e/cypress.json",
+            "tsConfig": "apps/simplekart-e2e/tsconfig.e2e.json",
+            "devServerTarget": "simplekart:serve:development"
+          },
+          "configurations": {
+            "production": {
+              "devServerTarget": "simplekart:serve:production"
+            }
+          }
+        },
+        "lint": {
+          "builder": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": ["apps/simplekart-e2e/**/*.{js,ts}"]
+          }
+        }
+      }
+    }
+  },
+  "cli": {
+    "defaultCollection": "@nrwl/angular"
+  },
+  "schematics": {
+    "@nrwl/angular": {
+      "application": {
+        "linter": "eslint"
+      },
+      "library": {
+        "linter": "eslint"
+      },
+      "storybook-configuration": {
+        "linter": "eslint"
+      }
+    },
+    "@nrwl/angular:application": {
+      "style": "scss",
+      "linter": "eslint",
+      "unitTestRunner": "jest",
+      "e2eTestRunner": "cypress"
+    },
+    "@nrwl/angular:library": {
+      "style": "scss",
+      "linter": "eslint",
+      "unitTestRunner": "jest"
+    },
+    "@nrwl/angular:component": {
+      "style": "scss"
+    }
+  },
+  "defaultProject": "simplekart"
+}
