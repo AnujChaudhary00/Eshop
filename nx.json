@@ -27,12 +27,31 @@
     ]
   },
   "projects": {
+    "admin": {
+      "tags": []
+    },
+    "admin-e2e": {
+      "tags": [],
+      "implicitDependencies": ["admin"]
+    },
+    "orders": {
+      "tags": []
+    },
+    "products": {
+      "tags": []
+    },
     "simplekart": {
       "tags": []
     },
     "simplekart-e2e": {
       "tags": [],
       "implicitDependencies": ["simplekart"]
+    },
+    "ui": {
+      "tags": []
+    },
+    "users": {
+      "tags": []
     }
   }
 }

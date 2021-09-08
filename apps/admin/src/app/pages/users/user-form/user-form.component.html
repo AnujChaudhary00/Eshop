@@ -1,0 +1,86 @@
+<p-toast position="top-center"></p-toast>
+<div class="admin-page">
+    <p-card [header]="editmode?'Edit User':'Add User'" subheader="Add or Edit User"> 
+        <div class="p-grid p-mb-5">
+            <div class="p-col-12">
+                <p-toolbar>
+                    <div class="p-toolbar-group-left"></div>
+                    <div class="p-toolbar-group-right"> 
+                        <p-button styleClass="p-button-primary mr-3"  [label]="editmode ?'Update':'Create'" icon="pi pi-plus" (click)="onSubmit()"></p-button>
+                        <p-button styleClass="p-button-secondary"  label="Cancel" icon="pi pi-arrow-circle-left" (click)="cancel()" ></p-button>
+                    </div>
+                </p-toolbar>
+            </div>
+        </div>
+        <div class="grid mt-5">
+            <div class="col-12">
+                <form [formGroup]="form">
+                    <div class="ui-fluid formgrid grid">
+                        <div class="field col">
+                            <label for="">Name</label> <br>
+                            <input formControlName="name" id="name" class="m-2" type="" pInputText/>
+                            <small *ngIf="UserForm.name.invalid && isSubmitted" class="p-error">Name is Required</small>
+                        </div>
+                        <div class="field col">
+                            <label for="email">Email</label> <br>
+                            <input formControlName="email" id="email" class="m-2" type="text" pInputText>
+                            <small *ngIf="UserForm.email.invalid && isSubmitted" class="p-error">Email is Required</small>
+                        </div>
+                        <div class="field col">
+                            <label for="phone">Phone</label>
+                            <br>
+                            <span class="p-float-label">
+                                <p-inputMask mask="(999) 999-9999" formControlName="phone"></p-inputMask>
+                                <small *ngIf="UserForm.phone.invalid && isSubmitted" class="p-error">
+                                    <span *ngIf="UserForm.email.errors.required">Phone is Required</span>
+                                    <span *ngIf="UserForm.email.errors.email">Please Enter correct Email</span>
+                                </small>
+                            </span>
+                         
+                        </div>
+                       
+                    </div>
+
+                    <div class="fluid formgrid grid">
+                        <div class="field col">
+                            <label for="street">Street</label> <br>
+                            <input formControlName="street" id="street" class="m-2" type="text" pInputText>
+                        </div>
+                        <div class="field col">
+                            <label for="apartment">Apartment</label> <br>
+                            <input formControlName="apartment" id="apartment" class="m-2" type="" pInputText/>
+                        </div>
+                        <div class="field col">
+                            <label for="city">City</label> <br>
+                            <input formControlName="city" id="city" class="m-2" type="" pInputText/>
+                            <small *ngIf="UserForm.city.invalid && isSubmitted" class="p-error">City is Required</small>
+                        </div>
+                    </div>
+                    <div class="fluid formgrid grid">
+
+                        <div class="field col">
+                            <label for="country">Country</label> <br>
+                               <p-dropdown [options]="countries" [filter]="true"
+                             filterBy="name" optionValue="id" [showClear]="true"
+                              placeholder="select a Country" formControlName="country" 
+                            optionLabel="name" ></p-dropdown>
+                            <small *ngIf="UserForm.country.invalid && isSubmitted" class="p-error">Country is Required</small>
+                        </div>
+
+                        <div class="field col">
+                            <label for="isadmin">Is Admin</label><br>
+                            <p-inputSwitch formControlName="isadmin" class="m-2" ></p-inputSwitch>
+                        </div>
+
+                        <div class="field col">
+                            <label for="password">Password</label> <br>
+                            <input formControlName="passwordhash"  id="password" class="m-2" type="text" pInputText>
+                        </div>
+                    </div>
+
+
+                </form>
+            </div>
+        </div>
+    </p-card>
+</div>

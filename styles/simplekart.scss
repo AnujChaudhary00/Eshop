@@ -1,0 +1,22 @@
+
+//base
+@import './base/colors.scss';
+@import './base/fonts.scss';
+@import './base/mixins.scss';
+
+
+//third party libraries
+@import '~primeicons/primeicons.css';
+@import '~primeng/resources/themes/saga-blue/theme.css';
+@import '~primeng/resources/primeng.min.css';
+@import './base/configuration.scss';
+
+//pages
+@import './apps/simplekart/pages/home-page.scss';
+@import './apps/simplekart/pages/product-list-page.scss';
+
+//shared
+@import './apps/simplekart/shared/header.scss';
+@import './apps/simplekart/shared/footer.scss';
+
+@import './libs/ui/ui.scss';
