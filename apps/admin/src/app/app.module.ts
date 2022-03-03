@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 
 import { AppComponent } from './app.component';
@@ -39,6 +39,8 @@ import { UserListComponent } from './pages/users/user-list/user-list.component';
 import { UserFormComponent } from './pages/users/user-form/user-form.component';
 import { OrderListComponent } from './pages/orders/order-list/order-list.component';
 import { OrderDeatilsComponent } from './pages/orders/order-deatils/order-deatils.component';
+import {  JwtInterceptor, UsersModule } from '@eweb/users';
+import { AppRoutingModule } from './app-routing.module';
 
 const UX_MODULE=[
   CardModule,
@@ -57,63 +59,8 @@ const UX_MODULE=[
   EditorModule,
   TagModule,
   InputMaskModule,
-  FieldsetModule
-]
-
-const routes:Routes=[
-  {
-    path:'',
-    component:ShellComponent,
-    children:[
-      {
-        path:'dashboard',
-        component:DashboardComponent
-      },{
-        path:'categories',
-        component:CategoriesListComponent
-      },
-      {
-        path:'categories/form',
-        component:CategoriesFormComponent
-      },
-      {
-        path:'categories/form/:id',
-        component:CategoriesFormComponent
-      },
-      {
-        path:'products',
-        component:ProductsListComponent
-      },
-      {
-        path:'products/form',
-        component:ProductsFormComponent
-      },
-      {
-        path:'products/form/:id',
-        component:ProductsFormComponent
-      },
-      {
-        path:'users',
-        component:UserListComponent
-      },
-      {
-        path:'users/form',
-        component:UserFormComponent
-      },
-      {
-        path:'users/form/:id',
-        component:UserFormComponent
-      },
-      { 
-       path:'orders',
-       component:OrderListComponent
-      },
-      {
-        path:'orders/:id',
-        component:OrderDeatilsComponent
-      }
-    ]
-  }
+  FieldsetModule,
+  UsersModule
 ]
 
 @NgModule({
@@ -124,12 +71,13 @@ const routes:Routes=[
     BrowserModule,
     BrowserAnimationsModule,
     HttpClientModule,
-    RouterModule.forRoot(routes, { initialNavigation: 'enabledBlocking' }),
+    AppRoutingModule,
     ...UX_MODULE,
     FormsModule,
     ReactiveFormsModule
   ],
-  providers: [CategoriesService,MessageService,ConfirmationService],
+  providers: [CategoriesService,MessageService,ConfirmationService,
+  {provide:HTTP_INTERCEPTORS,useClass:JwtInterceptor,multi:true}],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

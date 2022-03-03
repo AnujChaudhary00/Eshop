@@ -1,0 +1,48 @@
+.banner{
+    margin-top: 20px;
+    height:300px;
+    width:100%;
+    background-color: rgb(152, 206, 214);
+    border-radius:15px;
+
+    .grid
+    {
+        display: flex;
+        justify-content: space-between;
+    }
+
+    &-button{
+
+        background-color: var(--surface-0);
+        color: $primary-color;
+        border:0;
+        border-radius:13px;
+        height: 50px;
+        &:enabled:hover{
+            background-color: var(--surface-0);
+            color: $primary-color;
+            border:0;
+        }
+    }
+
+    &-text{
+        color:var(--surface-700);
+        margin-top:50px;
+
+        h1{
+            margin:0;
+            font-size: 3em;
+            font-weight: 400;
+        }
+
+        h4{
+            margin:0px;
+            font-size: 1.3em;
+            font-weight: 10;
+        }  
+    }
+    &-image{
+        text-align: right;
+        margin-right: 60px;
+    }
+}

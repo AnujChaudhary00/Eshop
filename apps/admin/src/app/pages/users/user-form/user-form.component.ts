@@ -52,7 +52,7 @@ export class UserFormComponent implements OnInit {
       passwordhash:[''],
       email:['',[Validators.required,Validators.email]],
       phone:['',Validators.required],
-      isadmin:[false],
+      isadmin:[],
       street:[''],
       apartment:[''],
       zip:[''],
@@ -78,6 +78,7 @@ export class UserFormComponent implements OnInit {
       zip:this.UserForm.zip.value,
       street:this.UserForm.street.value,
       apartment:this.UserForm.apartment.value,
+      isadmin:this.UserForm.isadmin.value
     }
 
     if(this.editmode)
@@ -146,10 +147,10 @@ export class UserFormComponent implements OnInit {
           this.UserForm.country.setValue(user.country);
           this.UserForm.apartment.setValue(user.apartment);
           this.UserForm.street.setValue(user.street);
-          this.UserForm.isadmin.setValue(!user.isadmin);
+          this.UserForm.isadmin.setValue(user.isadmin);
           this.UserForm.phone.setValue(user.phone);
           this.UserForm.zip.setValue(user.zip);
-
+          this.UserForm.passwordhash.setValue(user.passwordhash);
           this.UserForm.passwordhash.setValidators([]);
           this .UserForm.passwordhash.updateValueAndValidity();
         })

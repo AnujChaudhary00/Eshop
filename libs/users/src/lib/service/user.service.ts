@@ -34,4 +34,10 @@ export class UserService {
    updateUser(user:Users,userid:string):Observable<Users>{
     return this.http.put<Users>(`${this.apiURLUsers}/${userid}`,user);
   }
+
+  getCount()
+  {
+    return this.http.get<any>(`${this.apiURLUsers}/get/count`);
+  }
+
 }

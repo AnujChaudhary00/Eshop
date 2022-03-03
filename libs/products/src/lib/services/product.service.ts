@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import {HttpClient} from '@angular/common/http';
+import {HttpClient, HttpParams} from '@angular/common/http';
 import { Observable } from 'rxjs';
 import {environment} from '@env/environment';
 import { Product } from '../models/product';
@@ -12,9 +12,15 @@ export class ProductService {
   constructor(private http:HttpClient) { }
    apiURLCategories=environment.api_URL+'/products';
    
-  getProducts():Observable<Product[]>
+  getProducts(categoryFilter?:string[]):Observable<Product[]>
   {
-    return this.http.get<Product[]>(this.apiURLCategories);
+    let params=new HttpParams();
+    if(categoryFilter)
+    {
+      params=params.append('categories',categoryFilter.join(','));
+      return this.http.get<Product[]>(`${this.apiURLCategories}/byCategory`,{params:params});
+    }
+    return this.http.get<Product[]>(this.apiURLCategories,{params:params});
   }
 
   getSingleProduct(productId:string):Observable<Product>
@@ -33,4 +39,13 @@ export class ProductService {
    updateProduct(product:FormData,productid:string):Observable<Product>{
     return this.http.put<Product>(`${this.apiURLCategories}/${productid}`,product);
   }
+
+  getCount()
+  {
+    return this.http.get<any>(`${this.apiURLCategories}/get/count`);
+  }
+
+   getFeaturedProducts(count:number):Observable<Product[]>{
+     return this.http.get<Product[]>(`${this.apiURLCategories}/get/featured/${count}`)
+   }
 }

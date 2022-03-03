@@ -1,0 +1,50 @@
+.d-item
+{
+    text-align: center;
+    display:flex;
+    color:var(--surface-0);
+    justify-content: space-between;
+
+    .pi{
+        font-size:4em;
+        margin-bottom:15px;
+    }
+
+    .name{
+        font-size:1.0em;
+    }
+
+    .number{
+        font-size: 2.0em;
+        margin-top: 50px;
+    }
+}
+
+.d-orders
+{
+    background: rgb(131,58,180);
+background: linear-gradient(90deg, rgba(131,58,180,1) 0%, rgba(253,29,29,1) 51%, rgba(252,176,69,1) 100%);
+}
+
+.d-totalsales
+{
+    background: rgb(131,58,180);
+background: linear-gradient(90deg, rgba(131,58,180,1) 0%, rgba(255,103,103,1) 41%, rgba(252,176,69,1) 100%);
+}
+
+.d-products
+{
+    background: rgb(119,41,172);
+background: linear-gradient(90deg, rgba(119,41,172,1) 0%, rgba(154,31,88,1) 0%, rgba(144,34,113,1) 0%, rgba(182,23,23,1) 66%, rgba(208,80,40,1) 86%, rgba(252,176,69,1) 100%);
+}
+
+.d-users
+{
+    background: rgb(119,41,172);
+background: linear-gradient(90deg, rgba(119,41,172,1) 0%, rgba(154,31,88,1) 0%, rgba(51,181,235,1) 0%, rgba(182,23,23,1) 66%, rgba(190,208,40,1) 86%, rgba(252,176,69,1) 100%);
+}
+
+   .d-totalsales .d-item .number{
+       margin-top:30px;
+        font-size: 1.5em;
+    }

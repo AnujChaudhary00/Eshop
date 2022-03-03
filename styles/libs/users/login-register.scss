@@ -1,0 +1,18 @@
+.login-register
+{
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    &-panel{
+        width:650px;
+        height: 525px;
+        background-color: var(--surface-a);
+        box-shadow: 0.5px 0.5px 5px;
+    }
+   
+}
+.full-btn
+{
+    width:100%;
+}
