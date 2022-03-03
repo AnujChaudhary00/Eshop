@@ -1,0 +1,20 @@
+<div class="product-item" *ngIf="product">
+    <div class="product-item-wrapper">
+        <img [routerLink]="'/products/'+ product.id " [src]="product.image" class="image" [alt]="product.name">
+        <h4 class="name"  [routerLink]="'/products/'+ product.id " >{{product.name}}</h4>
+        <h5 class="price">{{product.price | currency}}</h5>
+
+        <div>
+            <p-button styleClass="m-3 add-to-cart"
+            
+            icon="pi pi-shopping-cart"
+            ></p-button> 
+    
+            <p-button [routerLink]="'/products/'+ product.id "  styleClass="m-3 check-in"
+            label="Check Details"
+            
+            ></p-button>
+        </div>
+      
+    </div>
+</div>

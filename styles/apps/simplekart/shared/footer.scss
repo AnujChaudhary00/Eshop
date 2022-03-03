@@ -1,0 +1,24 @@
+.footer-container
+{
+    width: 100%;
+    background-color: #ffffb1;
+    border-radius: 15px;
+    .grid
+    {
+        padding: 10px;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    ul{
+        display: flex;
+        flex-direction: row;
+        justify-content: flex-end;
+
+        li{
+            margin-left: 5px;
+        }
+    }
+}

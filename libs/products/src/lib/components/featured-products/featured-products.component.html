@@ -1,0 +1,53 @@
+<div class="feature-products">
+    <!-- <h3 style="color:var(--surface-700)" class="mt-8">Featured Products</h3>
+    <div class="grid">
+        <div class="col-3" *ngFor="let product of featuredProducts">
+            <eweb-product-item [product]='product'></eweb-product-item>
+        </div>
+    </div> -->
+    
+
+    <p-carousel [value]="featuredProducts" styleClass="custom-carousel" [numVisible]="3" [numScroll]="1" [circular]="true" [autoplayInterval]="3000" [responsiveOptions]="responsiveOptions">
+        <ng-template pTemplate="header">
+            <h3 style="color:white; font-size: 40px; text-align: center; text-shadow:5px 5px black; " class="mt-8">Featured Products</h3>
+    
+        </ng-template>
+        <ng-template let-product pTemplate="item">
+            <div class="product-item">
+                <div class="product-item-wrapper">
+                        <img [src]="product.image" class="image" [alt]="product.name" class="image" />
+                    <div>
+                        <h4 class="name">{{product.name}}</h4>
+                        <h5 class="price">{{product.price | currency}}</h5>
+                        <div>
+                            <p-button styleClass="m-1 add-to-cart"
+                            icon="pi pi-shopping-cart"
+                            
+                            ></p-button> 
+                            <p-button [routerLink]="'/products/'+ product.id "  styleClass="m-1 check-in"
+                            label="Check Details"
+                            
+                            ></p-button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </ng-template>
+    </p-carousel>
+    
+
+    <div class="offer-banner">
+        <p class="banner-title"  style="color:white; font-size: 40px; text-align: center; text-shadow:5px 5px black; "  >Today's Deal</p>
+        <div class="grid">
+            <div class="col-4">
+                <img src="/assets/offer1.jpg" alt="1">
+            </div>
+            <div class="col-4">
+                <img src="/assets/offer2.jpg" alt="2">
+            </div>
+            <div class="col-4">
+                <img src="/assets/offer3.jpg" alt="3">
+            </div>
+        </div>
+    </div>
+</div>

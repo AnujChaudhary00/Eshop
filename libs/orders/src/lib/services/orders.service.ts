@@ -32,7 +32,15 @@ export class OrdersService {
   }
 
    updateOrder(status:{status:string},orderid:string):Observable<Order>{
-     console.log("worked")
     return this.http.put<Order>(`${this.apiURLOrders}/${orderid}`,status);
+  }
+
+  getCount()
+  {
+    return this.http.get<any>(`${this.apiURLOrders}/get/count`);
+  }
+
+  getSales(){
+   return this.http.get<any>(`${this.apiURLOrders}/get/totalsales`);
   }
 }
